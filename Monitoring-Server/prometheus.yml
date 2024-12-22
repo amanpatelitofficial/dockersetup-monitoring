@@ -38,7 +38,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-            - "alertmanager:9093"
+            - 3.110.171.219:9093"
 
 # Rule files
 rule_files:
