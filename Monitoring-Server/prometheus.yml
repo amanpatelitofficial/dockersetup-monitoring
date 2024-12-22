@@ -42,4 +42,4 @@ alerting:
 
 # Rule files
 rule_files:
-  - "alert_rule.yml"
+  - "/etc/prometheus/alert_rule.yml"
