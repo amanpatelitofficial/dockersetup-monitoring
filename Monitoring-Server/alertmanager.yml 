@@ -8,15 +8,15 @@ route:
 receivers:
 - name: 'email-notifications'         # Receiver name
   email_configs:
-  - to: amanpateldevops@gmail.com     # Email recipient
-    from: amanpateldevops@gmail.com              # Email sender
+  - to: amanpatel.itofficial@gmail.com     # Email recipient
+    from: amanpatel.itofficial@gmail.com              # Email sender
     smarthost: smtp.gmail.com:587     # SMTP server
-    auth_username: your_email         # SMTP auth username
-    auth_identity: your_email         # SMTP auth identity
-    auth_password: "bdmq omqh vvkk zoqx"  # SMTP auth password
+    auth_username: amanpatel.itofficial@gmail.com         # SMTP auth username
+    auth_identity: amanpatel.itofficial@gmail.com         # SMTP auth identity
+    auth_password: "vpva tznp ifui thsg"  # SMTP auth password
     send_resolved: true               # Send notifications for resolved alerts
 
-    inhibit_rules:
+inhibit_rules:
   - source_match:
       severity: 'critical'            # Source alert severity
     target_match:
