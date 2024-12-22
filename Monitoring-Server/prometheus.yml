@@ -1,0 +1,45 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # Node Exporter job
+  - job_name: "node_exporter"
+    static_configs:
+      - targets:
+          - "<Server_1_IP>:9100"
+          - "3.110.183.57:9100"
+
+  # Docker job
+  - job_name: "docker"
+    static_configs:
+      - targets:
+          - "<Server_1_IP>:8081"
+          - "3.110.183.57:8081"
+
+  # Website monitoring job
+  - job_name: "website"
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - "https://amanops.com"
+          - "http://<Server_1_IP>:8080"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 3.110.171.219:9115
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "alertmanager:9093"
+
+# Rule files
+rule_files:
+  - "alert.rules"

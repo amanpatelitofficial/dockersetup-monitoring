@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  #  website:
+  #  image: your-website-image:latest # Replace with your website's Docker image
+  #   container_name: website
+  #  ports:
+  #    - "8080:80" # Change the port mapping if necessary
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    restart: always
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
